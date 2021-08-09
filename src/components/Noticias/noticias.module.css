@@ -1,0 +1,49 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
+.noticiasPanel {
+    width: 70vw;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    padding-bottom: 55px;
+    padding-top: 25px;
+}
+
+
+.topo {
+    font-size: 2rem;
+    padding-bottom: 60px;
+    font-family: Roboto, sans-serif;
+    margin: 0 auto;
+    max-width: 75rem;
+}
+
+.titulo {
+    display: inline-block;
+}
+
+.border {
+    border-bottom: 5px solid #af2121;
+    position: absolute;
+    display: inline-block;
+    width: 5%;
+}
+
+.noticias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.button {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 75px;
+    width: 150px;
+}

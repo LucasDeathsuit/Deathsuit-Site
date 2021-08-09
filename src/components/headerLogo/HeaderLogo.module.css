@@ -1,0 +1,28 @@
+.header {
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    height: 85vh;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    object-fit: cover;
+    display: block;
+    max-height: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (max-height: 500px) {
+    .image {
+        height: 100vh;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .image {
+        height: 40vh;
+    }
+}

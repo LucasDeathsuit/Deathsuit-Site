@@ -1,0 +1,31 @@
+.item {
+    text-decoration: none;
+    color: white;
+    box-sizing: content-box;
+    margin-right: 5vw;
+}
+
+.item:after {
+    display: block;
+    content: '';
+    border-bottom: 3px #af2121 solid;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+    transform-origin: 0% 50%;
+}
+
+.item:hover:after {
+    transform: scaleX(1);
+}
+
+.text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text img {
+    margin-left: 10px;
+    width: 24px;
+    height: 24px;
+}

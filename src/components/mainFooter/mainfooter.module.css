@@ -1,0 +1,17 @@
+
+.mediaIcons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: linear-gradient(180deg, #000000 30%, #181818 100%);
+    padding-right: 2%;
+    height: 7vh;
+    min-height: 36px;
+}
+
+@media screen and (max-width: 600px) {
+    .mediaIcons {
+        justify-content: space-around;
+        padding-right: 0;
+    }
+}

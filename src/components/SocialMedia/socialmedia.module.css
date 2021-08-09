@@ -1,0 +1,19 @@
+.socialmediaicon {
+    width: 32px;
+    height: 32px;
+    margin: 0 20px;
+    color: red;
+}
+
+@media screen and (max-width: 600px) {
+    .socialmediaicon {
+        width: 8vw;
+        height: 8vw;
+        
+    }
+}
+
+.socialmediaicon:hover {
+    transform: scale(1.5);
+    transition: transform 1s;
+}

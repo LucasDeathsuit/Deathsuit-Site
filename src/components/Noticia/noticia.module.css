@@ -3,9 +3,19 @@
     font-family: Roboto, sans-serif;
     padding: 8px;
     margin: 5px;
-    flex: 1;
-    min-width: 350px;
-    max-width: 450px;
+    width: 32%;
+}
+
+@media screen and (max-width: 800px) {
+    .noticiaWrapper {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .noticiaWrapper {
+        width: 85%;
+    }
 }
 
 .noticiaWrapper:hover {
@@ -13,7 +23,7 @@
 }
 
 .noticia h2 {
-    font-size: 1.5rem;  
+    font-size: 1.5rem;
     margin-bottom: 25px;
 }
 
@@ -25,12 +35,17 @@
 
 .text {
     margin: 20px;
-    height: 150px;
+    overflow: hidden;
+}
+
+.noticiapicturewrapper {
+    display: block;
+    height: 230px;
 }
 
 .noticiapicture {
     width: 100%;
-    height: 230px;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -38,8 +53,5 @@
     .noticiapicture {
         height: 50vw;
     }
-
-    .noticiaWrapper {
-        min-width: 100%;
-    }
+    .noticiaWrapper {}
 }

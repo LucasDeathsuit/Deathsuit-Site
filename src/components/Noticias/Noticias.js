@@ -1,58 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import css from './noticias.module.css'
 import Noticia from '../Noticia/Noticia'
 import Button from '../Button/Button';
+import calcHeight from '../../helpers/calcNewsHeight';
 
 export default function Noticias() {
 
+    const [noticias, setNoticias] = useState();
+    const [height, setHeight] = useState();
 
-    const [noticias, setNoticias] = useState([
-        {
-            id: 1,
-            picture: "/Images/Capa.png",
-            title: "Titulo 1",
-            text: "Texto Texto Texto Texto Texto Tasdexto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texaeaehto Texto Texto Teaxt",
-            link: "/Images/Capa.png"
-        },
-        {
-            id: 2,
-            picture: "/Images/Capa.png",
-            title: "Titulo 1",
-            text: "Hoje foi um dia bem bacaninha Hoje foi um dia bem bacaninha Hoje foi um dia bem bacaninha Hoje foi um dia bem bacaninha Hoje foi um dia bem bacaninha",
-            link: "/Images/Capa.png"
-        },
-        {
-            id: 3,
-            picture: "/Images/Capa.png",
-            title: "Titulo 1",
-            text: "Hoje foi um dia bem bacaninha",
-            link: "/Images/Capa.png"
-        },
-        {
-            id: 4,
-            picture: "/Images/Capa.png",
-            title: "Titulo 1",
-            text: "Hoje foi um dia bem bacaninha",
-            link: "/Images/Capa.png"
-        },
-        {
-            id: 5,
-            picture: "/Images/Capa.png",
-            title: "Titulo 1",
-            text: "Hoje foi um dia bem bacaninha",
-            link: "/Images/Capa.png"
-        },
-        {
-            id: 6,
-            picture: "/Images/Capa.png",
-            title: "Titulo 1",
-            text: "Hoje foi um dia bem bacaninha",
-            link: "/Images/Capa.png"
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await fetch("http://192.168.100.159/site-banda/wp-json/wp/v2/news?_embed");
+            const json = await res.json();
+            setNoticias(json);
         }
-    ]);
+        fetchData();
+    }, [])
+
+    const noticiaRef = React.forwardRef((props, red) => {
+        
+
+    });
+
+    const noticiaControl = React.createRef();
 
 
 
+    if (!noticias) return null;
 
     return (
         <div id="noticias" className={css.noticiasPanel}>
@@ -68,7 +43,7 @@ export default function Noticias() {
                 {
                     noticias.map((noticia) => {
                         return (
-                            <Noticia key={noticia.id} noticia={noticia} />
+                            <Noticia ref={noticiaControl} key={noticia.id} noticia={noticia} />
                         )
                     })
                 }

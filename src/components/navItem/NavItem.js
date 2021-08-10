@@ -4,14 +4,14 @@ import css from './NavItem.module.css'
 export default function NavItem({ content, link, icon }) {
     return (
         <>
-            <a href={link} className={css.item}>
-                <li >
+            <li className={css.item}>
+                <a href={link} className={css.link} >
                     <div className={css.text}>
                         {content}
-                        {icon ? <img src={icon}/> :  false}
+                        {icon ? <img src={icon} alt="Player"/> : false}
                     </div>
-                </li>
-            </a>
+                </a>
+            </li>
         </>
     )
 }

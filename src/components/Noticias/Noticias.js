@@ -1,33 +1,62 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import css from './noticias.module.css'
-import Noticia from '../Noticia/Noticia'
+import { Noticia } from '../Noticia/Noticia'
 import Button from '../Button/Button';
 import calcHeight from '../../helpers/calcNewsHeight';
 
 export default function Noticias() {
-
+    const width = useWindowSize()
     const [noticias, setNoticias] = useState();
-    const [height, setHeight] = useState();
+    const [size, setSize] = useState({});
+    const noticiaRef = useRef();
+
+
 
     useEffect(() => {
         const fetchData = async () => {
             const res = await fetch("http://192.168.100.159/site-banda/wp-json/wp/v2/news?_embed");
             const json = await res.json();
             setNoticias(json);
+            setSize({
+                height: calcHeight(json.length, noticiaRef.current.getBoundingClientRect().height) + "px",
+            })
         }
         fetchData();
     }, [])
 
-    const noticiaRef = React.forwardRef((props, red) => {
-        
+    useEffect(() => {
+        if (noticias) {
+            setSize({
+                height: calcHeight(noticias.length, noticiaRef.current.getBoundingClientRect().height) + "px",
+            })
+        }
+    }, [width, noticias])
 
-    });
-
-    const noticiaControl = React.createRef();
 
 
+    function useWindowSize() {
+        const [windowSize, setWindowSize] = useState({
+            width: undefined
+        });
+
+        useEffect(() => {
+            function handleResize() {
+                setWindowSize({
+                    width: window.innerWidth,
+                })
+            }
+            window.addEventListener("resize", handleResize);
+
+            handleResize();
+
+            return () => window.removeEventListener("resize", handleResize);
+        }, []);
+
+        return windowSize
+    }
 
     if (!noticias) return null;
+
 
     return (
         <div id="noticias" className={css.noticiasPanel}>
@@ -39,11 +68,11 @@ export default function Noticias() {
                     </div>
                 </div>
             </div>
-            <div className={css.noticias}>
+            <div style={size} className={css.noticias}>
                 {
                     noticias.map((noticia) => {
                         return (
-                            <Noticia ref={noticiaControl} key={noticia.id} noticia={noticia} />
+                            <Noticia ref={noticiaRef} key={noticia.id} noticia={noticia} />
                         )
                     })
                 }

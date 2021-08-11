@@ -3,13 +3,9 @@ import css from './noticia.module.css'
 import Button from '../Button/Button'
 import formatText from '../../helpers/textFormatter';
 
-export default function Noticia({ noticia }) {
+export const Noticia = React.forwardRef( (props, forwardRef)  => {
 
-    // if (noticia._embedded) {
-    //     const picture = noticia._embedded['wp:featuredmedia']['0'].media_details.sizes.medium_large;
-    // } else {
-    //     const picture = "";
-    // }
+    const {noticia} = props;
 
     const picture = noticia._embedded ? noticia._embedded['wp:featuredmedia']['0'].media_details.sizes.medium : "";
     const title = noticia.title.rendered;
@@ -17,7 +13,7 @@ export default function Noticia({ noticia }) {
     const link = noticia.link;
 
     return (
-        <div className={css.noticiaWrapper}>
+        <div ref={forwardRef} className={css.noticiaWrapper}>
             <div className={css.noticia}>
                 <a className={css.noticiapicturewrapper} href={link}>
                     {
@@ -36,4 +32,6 @@ export default function Noticia({ noticia }) {
             </div >
         </div>
     )
-}
+});
+
+

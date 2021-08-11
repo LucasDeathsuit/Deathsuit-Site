@@ -37,26 +37,20 @@
 .noticias {
     display: flex;
     flex-flow: column wrap;
-    height: 1200px;
     align-items: center;
 }
-
-@media screen and (max-width: 800px) {
-    .noticias {
-        height: 1800px;
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .noticias {
-        height: calc(4000px - 120vw);
-    }
-}
-
 
 .button {
     margin-right: auto;
     margin-left: auto;
-    margin-top: 75px;
+    margin-bottom: 2rem;
     width: 150px;
+}
+
+
+@media screen and (max-width: 500px) {
+    .button {
+        width: 50%;
+    }
+    
 }

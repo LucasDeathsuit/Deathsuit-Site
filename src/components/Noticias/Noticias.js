@@ -14,9 +14,9 @@ export default function Noticias() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await fetch("http://192.168.100.159/site-banda/wp-json/wp/v2/news?_embed");
+            const res = await fetch("http://wp.deathsuit.com.br/wp-json/wp/v2/news?_embed");
             const json = await res.json();
-            setNoticias(json);
+            setNoticias(json.slice(0, 6));
             setSize({
                 height: calcHeight(json.length, noticiaRef.current.getBoundingClientRect().height) + "px",
             })

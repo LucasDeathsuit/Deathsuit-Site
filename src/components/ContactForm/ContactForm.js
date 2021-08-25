@@ -31,7 +31,7 @@ export default function ContactForm() {
         console.log(email);
         console.log(name);
         console.log(message);
-        const res = await fetch("http://localhost/site-banda/wp-json/contact-us/v1/send", {
+        const res = await fetch("http://wp.deathsuit.com.br/wp-json/contact-us/v1/send", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -47,17 +47,17 @@ export default function ContactForm() {
         <div className={css.formWrapper}>
             <form onSubmit={handleSubmit} className={css.form}>
                 <FormItem>
-                    <label className={css.label} htmlFor="email">
-                        E-mail
-                    </label>
-                    <input className={css.textField} type="email" id="email" placeholder="email@example.com" required onChange={handleEmailChange} />
-                </FormItem>
-
-                <FormItem>
                     <label className={css.label} htmlFor="nome">
                         Nome
                     </label>
                     <input className={css.textField} type="text" id="nome" required onChange={handleSubjectChange} />
+                </FormItem>
+                
+                <FormItem>
+                    <label className={css.label} htmlFor="email">
+                        E-mail
+                    </label>
+                    <input className={css.textField} type="email" id="email" placeholder="email@example.com" required onChange={handleEmailChange} />
                 </FormItem>
 
                 <FormItem><label className={css.label} htmlFor="mensagem">

@@ -7,7 +7,7 @@ export default function MainFooter() {
         <div className={css.mediaIcons}>
             <SocialMedia logo="instagram_logo" alt="Instagram" link="https://instagram.com/_deathsuit"/>
             <SocialMedia logo="facebook_logo" alt="Facebook" link="https://facebook.com/deathsuit"/>
-            <SocialMedia logo="youtube_logo" alt="Youtube" link="https://www.youtube.com/channel/UCLKLNxBbfeT8-LXpyEUjU3g"/>
+            <SocialMedia logo="youtube_logo" alt="Youtube" link="https://www.youtube.com/channel/UCbqeKL8Djio8i8tnTGlgLiQ"/>
         </div>
     )
 }

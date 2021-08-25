@@ -1,0 +1,39 @@
+
+.alert {
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    z-index: 9;
+    color: #fff;
+    padding: 8px 8%;
+    opacity: 0;
+}
+
+.alert:hover {
+    opacity: 100;
+    transition: 2s;
+}
+
+.error {
+    background-color: red;
+}
+
+
+.success {
+    background-color: #18A33D;
+}
+
+.topo {
+    display: flex;
+    flex-direction: row;
+}
+
+.topo h2 {
+    font-weight: bold;
+    margin-left: 25px;
+    font-size: 1.5em;
+}
+
+.description {
+    margin-left: 60px;
+}

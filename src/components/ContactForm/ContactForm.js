@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import FormItem from '../FormItem/FormItem'
 import css from './contactForm.module.css'
 import Button from '../Button/Button'
 
 export default function ContactForm() {
 
+    const [name, setName] = useState("eaí");
     const [email, setEmail] = useState();
-    const [name, setName] = useState();
     const [message, setMessage] = useState();
 
     const handleEmailChange = (e) => {
@@ -23,14 +23,11 @@ export default function ContactForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        sendEmail();
-
+        // sendEmail();
+        cleanForm();
     }
 
     const sendEmail = async () => {
-        console.log(email);
-        console.log(name);
-        console.log(message);
         const res = await fetch("http://wp.deathsuit.com.br/wp-json/contact-us/v1/send", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -43,6 +40,17 @@ export default function ContactForm() {
         console.log(res);
     }
 
+    const cleanForm = () => {
+        const test = "";
+        setName({});
+        setEmail({});
+        setMessage({});
+    }
+
+    useEffect(() => {
+    }, [name])
+    
+
     return (
         <div className={css.formWrapper}>
             <form onSubmit={handleSubmit} className={css.form}>
@@ -52,7 +60,7 @@ export default function ContactForm() {
                     </label>
                     <input className={css.textField} type="text" id="nome" required onChange={handleSubjectChange} />
                 </FormItem>
-                
+
                 <FormItem>
                     <label className={css.label} htmlFor="email">
                         E-mail

@@ -3,11 +3,13 @@ import NavPanel from '../components/navPanel/NavPanel'
 import MainFooter from '../components/mainFooter/MainFooter'
 import Header from '../components/Header/Header'
 import ContactForm from '../components/ContactForm/ContactForm'
+import Alert from '../components/Alert/Alert'
 
 export default function ContactUs() {
     return (
         <>
             <NavPanel />
+            <Alert />
             <Header imageSource="Images/Fundo 01.png">
                 <ContactForm />
             </Header>

@@ -1,8 +1,12 @@
 .navPanel {
+    position: fixed;
+    top: 0;
+    width: 100%;
     display: flex;
-    background-color: #000000;
+    z-index: 1;
+    background-color: #0000009f;
     color: #ffffff;
-    height: 8vh;
+    height: 60px;
 }
 
 .items {

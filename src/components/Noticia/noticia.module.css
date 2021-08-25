@@ -35,6 +35,11 @@
     font-size: 1rem;
     margin: 5px;
     max-height: 5rem;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
 }
 
 .text {

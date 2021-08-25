@@ -1,11 +1,11 @@
 import React from 'react'
 import css from './section.module.css'
-import Noticias from '../Noticias/Noticias'
 
-export default function Section() {
+export default function Section({children}) {
+    
     return (
-        <div className={css.section}>
-            <Noticias />
+        <div style={{backgroundImage: `url('Images/Textura_02.png')`}} className={css.section}>
+            {children}
         </div>
     )
 }

@@ -14,7 +14,7 @@ export const Noticia = React.forwardRef( (props, forwardRef)  => {
 
     return (
         <div ref={forwardRef} className={css.noticiaWrapper}>
-            <div className={css.noticia}>
+            <div className={css.noticia} >
                 <a className={css.noticiapicturewrapper} href={link}>
                     {
                     picture ? <img className={css.noticiapicture} src={picture.source_url} alt={title} /> : ""

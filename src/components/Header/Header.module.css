@@ -1,0 +1,30 @@
+.header {
+    height: 93vh;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.image {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+@media screen and (max-height: 500px) {
+    .header {
+        height: 100vh;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .header {
+        height: 40vh;
+    }
+}

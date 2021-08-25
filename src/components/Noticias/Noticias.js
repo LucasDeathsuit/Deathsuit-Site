@@ -3,22 +3,38 @@ import css from './noticias.module.css'
 import { Noticia } from '../Noticia/Noticia'
 import Button from '../Button/Button';
 import calcHeight from '../../helpers/calcNewsHeight';
+import Loading from '../../Loading/Loading';
 
 export default function Noticias() {
     const width = useWindowSize()
     const [noticias, setNoticias] = useState();
     const [size, setSize] = useState({});
-    const noticiaRef = useRef();
+    const [isLoading, setIsLoading] = useState(true);
+    const noticiasRef = useRef([]);
 
 
+    const addToRef = (reference) => {
+        if (reference && !noticiasRef.current.includes(reference)) {
+            noticiasRef.current.push(reference)
+        }
+    }
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await fetch("http://wp.deathsuit.com.br/wp-json/wp/v2/news?_embed");
-            const json = await res.json();
-            setNoticias(json.slice(0, 6));
+            try {
+                const res = await fetch("http://wp.deathsuit.com.br/wp-json/wp/v2/news?_embed");
+                const json = await res.json();
+                if (json.length < 6) {
+                    setNoticias(json.slice(0, 3));
+                } else {
+                    setNoticias(json.slice(0, 6));
+                }
+                setIsLoading(false);
+            } catch (err) {
+                console.log(err)
+            }
             setSize({
-                height: calcHeight(json.length, noticiaRef.current.getBoundingClientRect().height) + "px",
+                height: calcHeight(noticiasRef) + "px",
             })
         }
         fetchData();
@@ -27,7 +43,7 @@ export default function Noticias() {
     useEffect(() => {
         if (noticias) {
             setSize({
-                height: calcHeight(noticias.length, noticiaRef.current.getBoundingClientRect().height) + "px",
+                height: calcHeight(noticiasRef) + "px",
             })
         }
     }, [width, noticias])
@@ -35,15 +51,11 @@ export default function Noticias() {
 
 
     function useWindowSize() {
-        const [windowSize, setWindowSize] = useState({
-            width: undefined
-        });
+        const [windowSize, setWindowSize] = useState(undefined);
 
         useEffect(() => {
             function handleResize() {
-                setWindowSize({
-                    width: window.innerWidth,
-                })
+                setWindowSize(window.innerWidth)
             }
             window.addEventListener("resize", handleResize);
 
@@ -54,9 +66,6 @@ export default function Noticias() {
 
         return windowSize
     }
-
-    if (!noticias) return null;
-
 
     return (
         <div id="noticias" className={css.noticiasPanel}>
@@ -70,11 +79,13 @@ export default function Noticias() {
             </div>
             <div style={size} className={css.noticias}>
                 {
-                    noticias.map((noticia) => {
-                        return (
-                            <Noticia ref={noticiaRef} key={noticia.id} noticia={noticia} />
-                        )
-                    })
+                    isLoading ?
+                        <Loading /> :
+                        noticias.map((noticia) => {
+                            return (
+                                <Noticia ref={addToRef} key={noticia.id} noticia={noticia} />
+                            )
+                        })
                 }
             </div>
 

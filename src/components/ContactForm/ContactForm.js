@@ -35,7 +35,7 @@ export default function ContactForm() {
         let res = null;
         setIsLoading(true);
         try {
-            res = await fetch("http://wp.deathsuit.com.br/wp-json/contact-us/v1/sends", {
+            res = await fetch("http://wp.deathsuit.com.br/wp-json/contact-us/v1/send", {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -50,7 +50,7 @@ export default function ContactForm() {
             } else {
                 setAlertType("error")
             }
-
+            console.log(res);
         } catch (err) {
             console.log(err)
         } finally {

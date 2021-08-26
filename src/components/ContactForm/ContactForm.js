@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react'
 import FormItem from '../FormItem/FormItem'
 import css from './contactForm.module.css'
 import Button from '../Button/Button'
+import Alert from '../Alert/Alert'
 
 export default function ContactForm() {
 
     const [name, setName] = useState("eaí");
     const [email, setEmail] = useState();
     const [message, setMessage] = useState();
+    const [isAlerting, setIsAlerting] = useState(false);
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -22,8 +24,13 @@ export default function ContactForm() {
     }
 
     const handleSubmit = (e) => {
+        console.log("AA")
         e.preventDefault();
-        // sendEmail();
+        setIsAlerting(true);
+        const interval = setTimeout(() => {
+            setIsAlerting(false);
+        }, 4000);
+        sendEmail();
         cleanForm();
     }
 
@@ -41,10 +48,6 @@ export default function ContactForm() {
     }
 
     const cleanForm = () => {
-        const test = "";
-        setName({});
-        setEmail({});
-        setMessage({});
     }
 
     useEffect(() => {
@@ -53,6 +56,7 @@ export default function ContactForm() {
 
     return (
         <div className={css.formWrapper}>
+            <Alert isAlerting={isAlerting} alertType="success"/>
             <form onSubmit={handleSubmit} className={css.form}>
                 <FormItem>
                     <label className={css.label} htmlFor="nome">

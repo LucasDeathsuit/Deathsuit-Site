@@ -2,13 +2,12 @@ import React, { useState } from 'react'
 import { BsCheckCircle } from 'react-icons/bs'
 import css from './alert.module.css'
 
-export default function Alert() {
+export default function Alert({alertType, isAlerting}) {
 
-    const [isError, setIsError] = useState(false);
-
+    const isOn = isAlerting ? "on" : "off"
 
     return (
-        <div className={`${css.alert} ${isError ? css.error : css.success}`}>
+        <div className={`${css.alert} ${css[alertType]} ${css[isOn]}`}>
             <div className={css.topo}>
                 <BsCheckCircle size="2em"/>
                 <h2>E-mail enviado</h2>

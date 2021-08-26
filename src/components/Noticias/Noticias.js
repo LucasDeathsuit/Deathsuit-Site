@@ -3,7 +3,7 @@ import css from './noticias.module.css'
 import { Noticia } from '../Noticia/Noticia'
 import Button from '../Button/Button';
 import calcHeight from '../../helpers/calcNewsHeight';
-import Loading from '../../Loading/Loading';
+import Loading from '../Loading/Loading';
 
 export default function Noticias() {
     const width = useWindowSize()
@@ -80,7 +80,7 @@ export default function Noticias() {
             <div style={size} className={css.noticias}>
                 {
                     isLoading ?
-                        <Loading /> :
+                        <Loading color="white" type="Oval"/> :
                         noticias.map((noticia) => {
                             return (
                                 <Noticia ref={addToRef} key={noticia.id} noticia={noticia} />

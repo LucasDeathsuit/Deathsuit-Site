@@ -9,8 +9,9 @@ export default function router() {
     return (
         <BrowserRouter>
             <Route component={Home} path="/" exact />
-            <Route component={News} path="/news" exact/>
-            <Route component={ContactUs} path="/contact-us"/>
+            <Route component={News} path="/news" exact />
+            <Route component={News} path="/news/:id" exact />
+            <Route component={ContactUs} path="/contact-us" exact />
         </BrowserRouter>
     )
 }

@@ -1,9 +1,15 @@
 import React from 'react'
 import css from './button.module.css'
 
-export default function Button({ children, theme }) {
+export default function Button({ children, theme, link }) {
 
 
 
-    return <button className={theme ? css[theme] : css.button}>{children}</button>
+    return (
+        <a href={link}>
+            <button className={theme ? css[theme] : css.button}>
+                {children}
+            </button>
+        </a>
+    )
 }

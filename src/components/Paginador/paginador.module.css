@@ -1,0 +1,12 @@
+.paginadorWrapper {
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    background-color: white;
+    padding: 20px 10px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

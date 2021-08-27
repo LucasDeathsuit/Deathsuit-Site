@@ -4,7 +4,7 @@
     background-color: #ffffff;
     text-transform: uppercase;
     color: #000000;
-    font-family: Roboto, sans-serif ;
+    font-family: Roboto, sans-serif;
     font-weight: bold;
     border: none;
     padding: 0;
@@ -18,12 +18,15 @@
 }
 
 .dark {
-    width: 100%;
+    width: 180px;
     height: 6vh;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     background-color: #252525;
     text-transform: uppercase;
     color: #fff;
-    font-family: Roboto, sans-serif ;
+    font-family: Roboto, sans-serif;
     font-weight: bold;
     border: none;
 }

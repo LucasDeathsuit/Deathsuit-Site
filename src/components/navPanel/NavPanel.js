@@ -7,7 +7,7 @@ export default function NavPanel() {
         <nav className={css.navPanel}>
             <ul className={css.items}>
                 <NavItem content='Home' link="/"></NavItem>
-                {/* <NavItem content='News' link="/news"></NavItem> */}
+                <NavItem content='News' link="/news"></NavItem>
                 <NavItem content='Contato' link="/contact-us"></NavItem>
             </ul>
             <ul className={`${css.items} ${css.rightRow}`}>

@@ -4,13 +4,16 @@ import { Noticia } from '../Noticia/Noticia'
 import Button from '../Button/Button';
 import calcHeight from '../../helpers/calcNewsHeight';
 import Loading from '../Loading/Loading';
+import PageNotFound from '../PageNotFound/PageNotFound';
 
-export default function Noticias() {
+export default function Noticias({pagina, atualizaQuantidadePaginas}) {
     const width = useWindowSize()
     const [noticias, setNoticias] = useState();
     const [size, setSize] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const noticiasRef = useRef([]);
+
+    const page = !pagina ? 1 : pagina
 
 
     const addToRef = (reference) => {
@@ -19,10 +22,19 @@ export default function Noticias() {
         }
     }
 
+    const setTotalPages = (quantidade) => {
+        atualizaQuantidadePaginas(quantidade)
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch("http://wp.deathsuit.com.br/wp-json/wp/v2/news?_embed");
+                noticiasRef.current.length = 0;
+                setIsLoading(true)
+                const res = await fetch(`http://wp.deathsuit.com.br/wp-json/wp/v2/news?page=${page}&per_page=6&_embed`);
+                if(res.status >= 400){
+                    throw "Página não existe"
+                }
                 const json = await res.json();
                 if (json.length < 6) {
                     setNoticias(json.slice(0, 3));
@@ -30,15 +42,17 @@ export default function Noticias() {
                     setNoticias(json.slice(0, 6));
                 }
                 setIsLoading(false);
+                setTotalPages(res.headers.get("X-WP-TotalPages"))
             } catch (err) {
-                console.log(err)
+                setIsLoading(false)
             }
             setSize({
                 height: calcHeight(noticiasRef) + "px",
             })
         }
         fetchData();
-    }, [])
+    }, [pagina])
+
 
     useEffect(() => {
         if (noticias) {
@@ -81,18 +95,14 @@ export default function Noticias() {
                 {
                     isLoading ?
                         <Loading color="white" type="Oval"/> :
+                        !noticias ?
+                        <PageNotFound /> :
                         noticias.map((noticia) => {
                             return (
                                 <Noticia ref={addToRef} key={noticia.id} noticia={noticia} />
                             )
                         })
                 }
-            </div>
-
-            <div className={css.button}>
-                <a href='/News'>
-                    <Button theme="dark">Veja Mais</Button>
-                </a>
             </div>
         </div>
     )

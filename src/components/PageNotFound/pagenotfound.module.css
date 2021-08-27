@@ -1,0 +1,12 @@
+.error {
+    padding: 10%;
+    font-family: Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    padding: 25px;
+
+}

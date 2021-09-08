@@ -6,7 +6,7 @@ import calcHeight from '../../helpers/calcNewsHeight';
 import Loading from '../Loading/Loading';
 import PageNotFound from '../PageNotFound/PageNotFound';
 
-export default function Noticias({pagina, atualizaQuantidadePaginas}) {
+export default function Noticias({ pagina, atualizaQuantidadePaginas, noticiasPorPagina }) {
     const width = useWindowSize()
     const [noticias, setNoticias] = useState();
     const [size, setSize] = useState({});
@@ -31,16 +31,15 @@ export default function Noticias({pagina, atualizaQuantidadePaginas}) {
             try {
                 noticiasRef.current.length = 0;
                 setIsLoading(true)
-                const res = await fetch(`http://wp.deathsuit.com.br/wp-json/wp/v2/news?page=${page}&per_page=6&_embed`);
-                if(res.status >= 400){
+                setSize({
+                    height: calcHeight(noticiasRef) + "px",
+                })
+                const res = await fetch(`http://wp.deathsuit.com.br/wp-json/wp/v2/news?page=${page}&per_page=${noticiasPorPagina}&_embed`);
+                if (res.status >= 400) {
                     throw "Página não existe"
                 }
                 const json = await res.json();
-                if (json.length < 6) {
-                    setNoticias(json.slice(0, 3));
-                } else {
-                    setNoticias(json.slice(0, 6));
-                }
+                setNoticias(json);
                 setIsLoading(false);
                 setTotalPages(res.headers.get("X-WP-TotalPages"))
             } catch (err) {
@@ -87,21 +86,20 @@ export default function Noticias({pagina, atualizaQuantidadePaginas}) {
                 <div className={css.titulo}>
                     <h1>Novidades</h1>
                     <div className={css.border}>
-
                     </div>
                 </div>
             </div>
             <div style={size} className={css.noticias}>
                 {
                     isLoading ?
-                        <Loading color="white" type="Oval"/> :
+                        <Loading color="white" type="Oval" /> :
                         !noticias ?
-                        <PageNotFound /> :
-                        noticias.map((noticia) => {
-                            return (
-                                <Noticia ref={addToRef} key={noticia.id} noticia={noticia} />
-                            )
-                        })
+                            <PageNotFound /> :
+                            noticias.map((noticia) => {
+                                return (
+                                    <Noticia ref={addToRef} key={noticia.id} noticia={noticia} />
+                                )
+                            })
                 }
             </div>
         </div>

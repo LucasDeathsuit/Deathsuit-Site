@@ -1,0 +1,24 @@
+
+.error404Wrapper {
+    height: 93vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.errorMessage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    font-size: 3rem;
+    padding-top: 25px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.image {
+    padding-top: 25px;
+}

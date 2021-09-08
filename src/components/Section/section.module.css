@@ -1,5 +1,7 @@
 .section {
     margin: auto;
-    background-repeat: repeat;
-    padding-bottom: 20px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    
 }

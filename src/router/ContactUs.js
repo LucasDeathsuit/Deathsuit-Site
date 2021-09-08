@@ -9,7 +9,7 @@ export default function ContactUs() {
     return (
         <>
             <NavPanel />
-            <Header imageSource="Images/Fundo 01.png">
+            <Header imageSource="Images/fundo.jpg">
                 <ContactForm />
             </Header>
             <MainFooter />

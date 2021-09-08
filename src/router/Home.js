@@ -13,12 +13,12 @@ export default function Home() {
     return (
         <Container>
             <NavPanel />
-            <Header imageSource="Images/Fundo 01.png">
-                <HeaderLogo logo="Images/Deathsuit Logo Preto.png" />
+            <Header imageSource="Images/fundo.jpg">
+                <HeaderLogo logo="Images/Deathsuit Logo Preto 600px.png" />
             </Header>
             <MainFooter />
             <Section>
-                <Noticias />
+                <Noticias noticiasPorPagina="6" />
                 <Button theme="dark" link={'/news'}>Veja Mais</Button>
             </Section>
             <Footer />

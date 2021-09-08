@@ -35,7 +35,7 @@ export default function ContactForm() {
         let res = null;
         setIsLoading(true);
         try {
-            res = await fetch("http://wp.deathsuit.com.br/wp-json/contact-us/v1/send", {
+            res = await fetch("https://wp.deathsuit.com.br/wp-json/contact-us/v1/send", {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -44,16 +44,15 @@ export default function ContactForm() {
                     contact_message: message,
                 })
             });
+        } catch (err) {
+            setAlertType("error")
+        } finally {
             if (res.status == 200) {
                 setAlertType("success")
                 clearForm();
             } else {
-                setAlertType("error")
+                setAlertType("error");
             }
-            console.log(res);
-        } catch (err) {
-            console.log(err)
-        } finally {
             setIsAlerting(true);
             setTimeout(() => {
                 setIsAlerting(false);

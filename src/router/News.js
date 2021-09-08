@@ -27,11 +27,11 @@ export default function News() {
     return (
         <>
             <NavPanel />
-            <Topo backgroundImage="url(../Images/CapaGibi.png)">
+            <Topo backgroundImage="url(../Images/CapaGibi.jpg)">
             </Topo>
             <MainFooter />
             <Section>
-                <Noticias atualizaQuantidadePaginas = {handlePagesCallback} pagina={pagina} />
+                <Noticias atualizaQuantidadePaginas = {handlePagesCallback} pagina={pagina} noticiasPorPagina="12"/>
                 <Paginador>
                     <Pagination count={totalPaginas} page={pagina} onChange={handlePageChange} color="primary" />
                 </Paginador>

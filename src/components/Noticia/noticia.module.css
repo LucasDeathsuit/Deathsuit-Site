@@ -23,7 +23,7 @@
     background-color: #2a2a2a;
 }
 
-.noticia h2 {
+.noticia .title {
     font-size: 1.3rem;
     margin-bottom: 25px;
     max-height: 5rem;
@@ -41,6 +41,7 @@
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
 }
+
 
 .text {
     margin: 20px;

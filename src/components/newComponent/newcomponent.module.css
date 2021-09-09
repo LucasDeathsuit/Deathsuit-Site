@@ -1,5 +1,5 @@
 .newPanel {
-    max-width: 1200px;
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -23,8 +23,11 @@
 
 .text {
     margin-bottom: 60px;
+    text-indent: 10px;
 }
 
 .image {
     border: 10px solid #181818;
+    max-height: 700px;
+    object-fit: cover;
 }

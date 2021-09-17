@@ -6,7 +6,7 @@ export default function Error404() {
         <div className={css.error404Wrapper}>
             <div className={css.errorMessage}>
                 <h2 className={css.title}>Essa página não existe :(</h2>
-                <img className={css.image} src="images/hey404.png" />
+                <img className={css.image} src="Images/hey404.png" />
                 <h2 className={css.title}>Saída pela esquerda</h2>
             </div>
         </div>

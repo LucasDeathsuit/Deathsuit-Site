@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import css from './noticias.module.css'
 import { Noticia } from '../Noticia/Noticia'
-import Button from '../Button/Button';
 import calcHeight from '../../helpers/calcNewsHeight';
 import Loading from '../Loading/Loading';
 import PageNotFound from '../PageNotFound/PageNotFound';
+import { getNewsPage } from '../../api/apiService';
 
 export default function Noticias({ pagina, atualizaQuantidadePaginas, noticiasPorPagina }) {
     const width = useWindowSize()
@@ -34,15 +34,15 @@ export default function Noticias({ pagina, atualizaQuantidadePaginas, noticiasPo
                 setSize({
                     height: calcHeight(noticiasRef) + "px",
                 })
-                const res = await fetch(`http://wp.deathsuit.com.br/wp-json/wp/v2/news?page=${page}&per_page=${noticiasPorPagina}&_embed`);
+                const res = await getNewsPage(page, noticiasPorPagina);
                 if (res.status >= 400) {
                     throw "Página não existe"
                 }
-                const json = await res.json();
-                setNoticias(json);
+                setNoticias(res.data);
                 setIsLoading(false);
-                setTotalPages(res.headers.get("X-WP-TotalPages"))
+                setTotalPages(res.headers["x-wp-totalpages"])
             } catch (err) {
+                console.log(err)
                 setIsLoading(false)
             }
             setSize({

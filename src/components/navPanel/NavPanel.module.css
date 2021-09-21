@@ -26,18 +26,25 @@
     flex-direction: row;
 }
 
+.navItem {
+    margin-right: 6vw;
+}
+
 .menuIcon {
     visibility: hidden;
     font-size: 1.5rem;
     cursor: pointer;
 }
 
+
 .rightRow {
     justify-content: flex-end;
+    align-items: center;
+    margin-right: 4vw;
 }
 
 @media screen and (max-width: 600px) {
-    .leftRow {
+    .leftRow{
         display: none;
     }
     .menuIcon {

@@ -2,18 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import css from './NavItem.module.css'
 
-export default function NavItem({ content, link, icon }) {
+export default function NavItem({ content }) {
+
+    const { path, name, icon } = content;
+
+
 
     return (
         <>
             <li className={css.item}>
-                <Link to={link}/>
-                <a href={link} className={css.link}>
+                <Link to={path} className={css.link}>
                     <div className={css.text}>
-                        {content}
-                        {icon ? <img src={icon} alt="Player"/> : false}
+                        {name}
+                        {icon ?
+                            <span className={css.navIcon}> {icon} </span>
+                            : false}
                     </div>
-                </a>
+                </Link>
             </li>
         </>
     )

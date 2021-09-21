@@ -1,0 +1,23 @@
+
+.sideNavBar {
+    position: fixed;
+    background-color: #000000;
+    padding-top: 65px;
+    z-index: -1;
+    height: 100vh;
+    font-family: Roboto, sans-serif;
+    width: 230px;
+    transition: margin 0.5s;
+}
+
+.sideNavBarClosed {
+    margin: 0 0 0 -230px;
+}
+
+.sideNavBarOpen {
+    margin: 0px;
+}
+
+.item {
+    padding-bottom: 5vh;
+}
